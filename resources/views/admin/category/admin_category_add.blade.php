@@ -12,16 +12,9 @@
         </div>
     </div>
     <!-- end page title -->
-    @if(session('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-    @endif
-    @if(session('error'))
-    <div class="alert alert-danger" role="alert">
-        {{ session('error') }}
-    </div>
-    @endif
+
+    <!-- include alert  -->
+    @include('layout.alert')
 
     <div class="row">
         <div class="col-lg-12">

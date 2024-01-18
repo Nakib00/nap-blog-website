@@ -34,7 +34,7 @@ class CategoryController extends Controller
         // Create a new category instance with the validated data
         $category = Category::create([
             'name' => $data['name'],
-            'status' => ($data['customRadio'] == 'active') ? '1' : '0', // Convert to '1' or '0'
+            'status' => ($data['customRadio'] == 'active') ? '0' : '1', // Convert to '1' or '0'
             'slug' => $slug,
         ]);
 
