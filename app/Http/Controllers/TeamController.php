@@ -38,7 +38,7 @@ class TeamController extends Controller
     {
         $teamData = team::findOrFail($id);
 
-        return view('admin.admin_team_edit', ['teamData' => $teamData]);
+        return view('admin.team.admin_team_edit', ['teamData' => $teamData]);
     }
     //Team update
     public function team_update(Request $request, $id)

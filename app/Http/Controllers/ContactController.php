@@ -12,8 +12,9 @@ class ContactController extends Controller
     {
 
         $contactData = contact::findOrFail($id);
-        return view('admin.admin_contact_edit', ['contactData' => $contactData]);
+        return view('admin.contact.admin_contact_edit', ['contactData' => $contactData]);
     }
+
     //update contact data
     public function contact_update(Request $request, $id)
     {

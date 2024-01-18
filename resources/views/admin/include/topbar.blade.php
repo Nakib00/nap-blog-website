@@ -5,7 +5,6 @@
 
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="../assets/images/users/user-1.jpg" alt="user-image" class="rounded-circle">
                     <span class="pro-user-name ml-1">
                         {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                     </span>
@@ -40,23 +39,11 @@
         <!-- LOGO -->
         <div class="logo-box">
             <a href="{{route('admin_index')}}" class="logo logo-dark text-center">
-                <span class="logo-sm">
-                    <img src="../assets/images/logo-sm.png" alt="" height="22">
-                    <!-- <span class="logo-lg-text-light">UBold</span> -->
-                </span>
-                <span class="logo-lg">
-                    <img src="../assets/images/logo-dark.png" alt="" height="20">
-                    <!-- <span class="logo-lg-text-light">U</span> -->
-                </span>
+            <p>Admin</p>
             </a>
 
             <a href="{{route('admin_index')}}" class="logo logo-light text-center">
-                <span class="logo-sm">
-                    <img src="../assets/images/logo-sm.png" alt="" height="22">
-                </span>
-                <span class="logo-lg">
-                    <img src="../assets/images/logo-light.png" alt="" height="20">
-                </span>
+                <p>Admin</p>
             </a>
         </div>
 

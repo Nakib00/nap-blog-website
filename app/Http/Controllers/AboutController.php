@@ -13,7 +13,7 @@ class AboutController extends Controller
     {
         $aboutData = About::findOrFail($id);
 
-        return view('admin.admin_blog_edit', ['aboutData' => $aboutData]);
+        return view('admin.about.admin_blog_edit', ['aboutData' => $aboutData]);
     }
     //update edited itame
     public function about_update(Request $request, $id)

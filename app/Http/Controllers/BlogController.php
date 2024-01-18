@@ -12,7 +12,7 @@ class BlogController extends Controller
     public function admin_blogAdd()
     {
         $categoryData = Category::all();
-        return view('admin.admin_singleBlogAdd', ['categoryData' => $categoryData]);
+        return view('admin.blog.admin_singleBlogAdd', ['categoryData' => $categoryData]);
     }
 
     //store the post
@@ -56,7 +56,7 @@ class BlogController extends Controller
     //open blog edit page
     public function admin_blogedit($id)
     {
-        return view('admin.admin_singleBlogEdit');
+        return view('admin.blog.admin_singleBlogEdit');
     }
 
     //Show blog details page
@@ -70,6 +70,6 @@ class BlogController extends Controller
         // Retrieve the associated user
         $user = $blogs->user;
 
-        return view('admin.admin_singleBlogDetail', ['blogs' => $blogs, 'categories' => $categories,'user'=>$user]);
+        return view('admin.blog.admin_singleBlogDetail', ['blogs' => $blogs, 'categories' => $categories,'user'=>$user]);
     }
 }

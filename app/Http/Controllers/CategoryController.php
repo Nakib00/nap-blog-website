@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function admin_categoryAdd()
     {
 
-        return view('admin.admin_category_add');
+        return view('admin.category.admin_category_add');
     }
 
     //store category
@@ -50,12 +50,14 @@ class CategoryController extends Controller
 
         return redirect(route('admin.catrgory'))->with('success', 'Category status changed successfully.');
     }
+
     // open edit page
     public function admin_categoryedit($id)
     {
         $categoryData = Category::findOrFail($id);
-        return view('admin.admin_category_edit', ['categoryData' => $categoryData]);
+        return view('admin.category.admin_category_edit', ['categoryData' => $categoryData]);
     }
+
     //Update catagory
     public function admin_categoryUpdate(Request $request, $id)
     {
@@ -65,7 +67,6 @@ class CategoryController extends Controller
 
         // Generate a unique slug based on the name
         $slug = Str::slug($data['name']);
-
 
         // Check if the slug already exists
         if (Category::where('slug', $slug)->where('id', '!=', $id)->exists()) {
@@ -85,6 +86,6 @@ class CategoryController extends Controller
         $category = category::findOrFail($id);
         $category->delete();
 
-        return redirect(route('admin.catrgory'))->with('success', 'Delete Teams successfully.');
+        return redirect()->back()->with('success', 'Delete Teams successfully.');
     }
 }
