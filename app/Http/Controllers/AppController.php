@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{about, team, contact, message};
+use App\Models\{about, team, contact, message, category, singlePageBlog};
 
 class AppController extends Controller
 {
@@ -41,6 +41,20 @@ class AppController extends Controller
     //open single post
     public function post()
     {
-        return view('post');
+        $id = 4;
+
+        $category = category::all();
+        $blog = singlePageBlog::findOrFail($id);
+        $user = $blog->user;
+
+        $categoryIds = $blog->category_ids;
+        $categories = Category::whereIn('id', $categoryIds)->get();
+
+        return view('post',['category' => $category,'blog'=> $blog,'user' => $user,'categories' => $categories,]);
+    }
+
+    //Blog comment
+    public function comment(){
+        
     }
 }

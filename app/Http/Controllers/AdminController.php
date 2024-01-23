@@ -44,6 +44,7 @@ class AdminController extends Controller
     //Blog section open
     public function admin_blog()
     {
+        
         $blogs = singlePageBlog::all();
         return view('admin.blog.admin_singleBlog',['blogs' => $blogs]);
     }

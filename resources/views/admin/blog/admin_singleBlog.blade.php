@@ -12,11 +12,9 @@
         </div>
     </div>
     <!-- end page title -->
-    @if(session('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-    @endif
+
+    <!-- include alert  -->
+    @include('layout.alert')
 
     <div class="row">
         <div class="col-lg-12">
@@ -33,8 +31,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th>Post by</th>
-                                <th>Category</th>
                                 <th>Date</th>
                                 <th>Status</th>
                                 <th>Show on Home</th>
@@ -47,39 +43,37 @@
                                 <td><a href="ecommerce-order-detail.html" class="text-body font-weight-bold">{{$blog ->id}}</a> </td>
 
                                 <td>
-                                    {{$blog ->id}}
+                                    {{$blog ->title}}
                                 </td>
-                                <td>
-                                    {{$blog ->id}}
-                                </td>
+                                <th>
+                                    {{$blog ->created_at}}
+                                </th>
                                 <td>
                                     @if($blog->status == '1')
-                                    <span class="badge badge-success">Active</span>
+                                    <a href="{{route('admin.blog.status_change', ['id' => $blog->id, 'status' => '0'])}}"><span class="badge badge-success">Active</span></a>
                                     @else
-                                    <span class="badge badge-danger">Inactive</span>
+                                    <a href="{{route('admin.blog.status_change', ['id' => $blog->id, 'status' => '1'])}}"><span class="badge badge-danger">Inactive</span></a>
                                     @endif
                                 </td>
                                 <td>
-                                    {{$blog ->id}}
-                                </td>
-                                <th>
-                                    {{$blog ->id}}
-                                </th>
-                                <td>
                                     @if($blog->show_on_home == '1')
-                                    <span class="badge badge-success">ON</span>
+                                    <a href="{{route('admin.blog.showHome', ['id' => $blog->id, 'show' => '0'])}}"><span class="badge badge-success">ON</span></a>
                                     @else
-                                    <span class="badge badge-danger">OFF</span>
+                                    <a href="{{route('admin.blog.showHome', ['id' => $blog->id, 'show' => '1'])}}"><span class="badge badge-danger">OFF</span></a>
                                     @endif
                                 </td>
                                 <td>
                                     <a href="{{route('admin.blog.detail', $blog->id)}}" class="action-icon"> <i class="mdi mdi-eye"></i></a>
                                     <a href="{{route('admin.blog.edit', $blog->id)}}" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
-                                    <form action="" method="POST" style="display: inline;">
+
+                                    <form action="{{ route('admin.blog.delete', $blog->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
                                         <button type="submit" class="btn btn-link action-icon">
                                             <i class="mdi mdi-delete"></i>
                                         </button>
                                     </form>
+
 
                                 </td>
                             </tr>

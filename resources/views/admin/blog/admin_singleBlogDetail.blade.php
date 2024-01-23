@@ -12,11 +12,9 @@
         </div>
     </div>
     <!-- end page title -->
-    @if(session('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-    @endif
+
+    <!-- include alert  -->
+    @include('layout.alert')
 
     <div class="row">
         <div class="col-xl-8 col-lg-6">
@@ -31,7 +29,7 @@
                             <!-- item-->
                             <a href="{{route('admin.blog.edit',$blogs->id)}}" class="dropdown-item"><i class="mdi mdi-pencil mr-1"></i>Edit</a>
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>Delete</a>
+                            <!-- <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete mr-1"></i>Delete</a> -->
                             <!-- item-->
                         </div>
                     </div>

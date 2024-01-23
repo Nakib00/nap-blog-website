@@ -14,11 +14,9 @@
         </div>
     </div>
     <!-- end page title -->
-    @if(session('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
-    @endif
+
+    <!-- include alert  -->
+    @include('layout.alert')
 
     <div class="row">
         <div class="col-lg-12">

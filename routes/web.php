@@ -51,6 +51,11 @@ Route::middleware('auth')->group(function () {
     Route::post('admin_blog/store', [BlogController::class, 'admin_blogstore'])->name('admin.blog.store');
     Route::get('admin_blog/{id}/detail', [BlogController::class, 'admin_blogDetails'])->name('admin.blog.detail');
     Route::get('admin_blog/{id}/edit', [BlogController::class, 'admin_blogedit'])->name('admin.blog.edit');
+    Route::put('admin_blog/{id}', [BlogController::class, 'admin_blogupdate'])->name('admin.blog.update');
+    Route::delete('admin_blog/{id}/delete', [BlogController::class, 'blog_delete'])->name('admin.blog.delete');
+    Route::get('blog/{id}/status/change/{status}',[BlogController::class, 'statusChange'])->name('admin.blog.status_change');
+    Route::get('blog/{id}/show/change/{show}',[BlogController::class, 'shwoHome'])->name('admin.blog.showHome');
+
 });
 
 require __DIR__ . '/auth.php';
@@ -62,4 +67,7 @@ Route::group(['prefix' => '/'], function () {
     //send message in contact page
     Route::post('storemessage', [AppController::class, 'storemessage'])->name('contact.storemessage');
     Route::get('post', [AppController::class, 'post'])->name('post');
+    //comment in blog post
+    Route::post('comment', [AppController::class, 'comment'])->name('blog.comment');
+
 });

@@ -48,7 +48,7 @@ class CategoryController extends Controller
         $category->status = $status;
         $category->save();
 
-        return redirect(route('admin.catrgory'))->with('success', 'Category status changed successfully.');
+        return redirect()->back()->with('success', 'Category status changed successfully.');
     }
 
     // open edit page
@@ -86,6 +86,6 @@ class CategoryController extends Controller
         $category = category::findOrFail($id);
         $category->delete();
 
-        return redirect()->back()->with('success', 'Delete Teams successfully.');
+        return redirect()->back()->with('success', 'Delete Category successfully.');
     }
 }
