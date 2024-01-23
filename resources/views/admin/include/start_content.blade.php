@@ -22,8 +22,8 @@
                     </div>
                     <div class="col-6">
                         <div class="text-right">
-                            <h3 class="mt-1">$<span data-plugin="counterup">58,947</span></h3>
-                            <p class="text-muted mb-1 text-truncate">Total Revenue</p>
+                            <h3 class="mt-1"><span data-plugin="counterup">{{ count($blogs) }}</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Total Blog</p>
                         </div>
                     </div>
                 </div> <!-- end row-->
@@ -40,8 +40,8 @@
                     </div>
                     <div class="col-6">
                         <div class="text-right">
-                            <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
-                            <p class="text-muted mb-1 text-truncate">Today's Sales</p>
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ count($categories) }}</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Total Category</p>
                         </div>
                     </div>
                 </div> <!-- end row-->
@@ -58,8 +58,8 @@
                     </div>
                     <div class="col-6">
                         <div class="text-right">
-                            <h3 class="text-dark mt-1"><span data-plugin="counterup">0.58</span>%</h3>
-                            <p class="text-muted mb-1 text-truncate">Conversion</p>
+                            <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ count($Comments) }}</span></h3>
+                            <p class="text-muted mb-1 text-truncate">Comment</p>
                         </div>
                     </div>
                 </div> <!-- end row-->
@@ -77,7 +77,7 @@
                     <div class="col-6">
                         <div class="text-right">
                             <h3 class="text-dark mt-1"><span data-plugin="counterup">78.41</span>k</h3>
-                            <p class="text-muted mb-1 text-truncate">Today's Visits</p>
+                            <p class="text-muted mb-1 text-truncate">Visits</p>
                         </div>
                     </div>
                 </div> <!-- end row-->

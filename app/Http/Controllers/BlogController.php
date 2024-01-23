@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{category, singlePageBlog};
+use App\Models\{category, singlePageBlog, Comment};
 
 
 class BlogController extends Controller
@@ -71,8 +71,10 @@ class BlogController extends Controller
         $categories = Category::whereIn('id', $categoryIds)->get();
         // Retrieve the associated user
         $user = $blogs->user;
+        //find all comments under the blog
+        $comments = Comment::where('blog_post_id', $id)->get();
 
-        return view('admin.blog.admin_singleBlogDetail', ['blogs' => $blogs, 'categories' => $categories, 'user' => $user]);
+        return view('admin.blog.admin_singleBlogDetail', ['blogs' => $blogs, 'categories' => $categories, 'user' => $user, 'comments' => $comments]);
     }
 
     //update blog post
@@ -126,7 +128,8 @@ class BlogController extends Controller
         return redirect()->back()->with('success', 'Blog post status change successfully.');
     }
     // show blog post in Home page
-    public function shwoHome($id,$show){
+    public function shwoHome($id, $show)
+    {
         $blog = singlePageBlog::findorFail($id);
         $blog->show_on_home = $show;
         $blog->save();

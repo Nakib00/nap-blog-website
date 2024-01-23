@@ -78,8 +78,9 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mt-0 mb-3">Comments (258)</h4>
+                    <h4 class="mt-0 mb-3">Comments ({{ count($comments) }})</h4>
 
+                    @foreach ($comments as $comment)
                     <div class="mt-2">
                         <div class="media">
                             <div class="media-body">
@@ -94,12 +95,13 @@
                                         <a href="javascript:void(0);" class="dropdown-item">Deactive</a>
                                     </div>
                                 </div>
-                                <h5 class="mt-0"><a href="contacts-profile.html" class="text-reset">Jeremy Tomlinson</a> <small class="text-muted">3 hours ago</small></h5>
-                                Nice work, makes me think of The Money Pit
+                                <h5 class="mt-0"><a href="contacts-profile.html" class="text-reset">{{$comment->name}}</a> <small class="text-muted">{{$comment->created_at->diffForHumans()}}</small></h5>
+                                {{ $comment->comment}}
                             </div>
                             <br />
                         </div>
                     </div>
+                    @endforeach
 
                     <div class="text-center mt-2">
                         <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-spin mdi-loading mr-1 font-16"></i> Load more </a>

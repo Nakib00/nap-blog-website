@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\user;
-use App\Models\category;
+use App\Models\{user,category,comment};
+
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,4 +22,9 @@ class singlePageBlog extends Model
     protected $casts = [
         'category_ids' => 'json', // Cast the column to JSON
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

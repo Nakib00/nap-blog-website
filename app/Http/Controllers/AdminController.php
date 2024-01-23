@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{about, team, contact, message, category, singlePageBlog};
+use App\Models\{about, team, contact, message, category, comment, singlePageBlog};
 
 class AdminController extends Controller
 {
+    //index
+    public function adminIndex()
+    {
+
+        $blogs = singlePageBlog::all();
+        $comments = comment::all();
+        $categories = category::all();
+        return view('admin.admin_index', ['blogs' => $blogs,'Comments'=>$comments,'categories'=>$categories ]);
+    }
+
     //open about page
     public function admin_about()
     {
@@ -44,8 +54,8 @@ class AdminController extends Controller
     //Blog section open
     public function admin_blog()
     {
-        
+
         $blogs = singlePageBlog::all();
-        return view('admin.blog.admin_singleBlog',['blogs' => $blogs]);
+        return view('admin.blog.admin_singleBlog', ['blogs' => $blogs]);
     }
 }

@@ -13,7 +13,7 @@
                         <i class="fas fa-home"></i>
                         Blog Home
                     </a></li>
-                <li class="tm-nav-item"><a href="{{route('post')}}" class="tm-nav-link">
+                <li class="tm-nav-item"><a href="{{route('post', ['id' => $blog->id])}}" class="tm-nav-link">
                         <i class="fas fa-pen"></i>
                         Single Post
                     </a></li>

@@ -2,13 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AppController,AdminController,AboutController,TeamController,ContactController,CategoryController,BlogController};
+use App\Http\Controllers\{AppController, AdminController, AboutController, TeamController, ContactController, CategoryController, BlogController};
 
 Route::get('/', [AppController::class, 'index'])->name('index');
 
-Route::get('/dashboard', function () {
-    return view('admin.admin_index');
-})->middleware(['auth', 'verified'])->name('admin_index');
+Route::get('/dashboard', [AdminController::class, 'adminIndex'])->middleware(['auth', 'verified'])->name('admin_index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('user-profile');
@@ -53,9 +51,8 @@ Route::middleware('auth')->group(function () {
     Route::get('admin_blog/{id}/edit', [BlogController::class, 'admin_blogedit'])->name('admin.blog.edit');
     Route::put('admin_blog/{id}', [BlogController::class, 'admin_blogupdate'])->name('admin.blog.update');
     Route::delete('admin_blog/{id}/delete', [BlogController::class, 'blog_delete'])->name('admin.blog.delete');
-    Route::get('blog/{id}/status/change/{status}',[BlogController::class, 'statusChange'])->name('admin.blog.status_change');
-    Route::get('blog/{id}/show/change/{show}',[BlogController::class, 'shwoHome'])->name('admin.blog.showHome');
-
+    Route::get('blog/{id}/status/change/{status}', [BlogController::class, 'statusChange'])->name('admin.blog.status_change');
+    Route::get('blog/{id}/show/change/{show}', [BlogController::class, 'shwoHome'])->name('admin.blog.showHome');
 });
 
 require __DIR__ . '/auth.php';
@@ -66,8 +63,8 @@ Route::group(['prefix' => '/'], function () {
     Route::get('contact', [AppController::class, 'contact'])->name('contact');
     //send message in contact page
     Route::post('storemessage', [AppController::class, 'storemessage'])->name('contact.storemessage');
-    Route::get('post', [AppController::class, 'post'])->name('post');
+    //open blog post
+    Route::get('blog/{id}/post', [AppController::class, 'post'])->name('post');
     //comment in blog post
-    Route::post('comment', [AppController::class, 'comment'])->name('blog.comment');
-
+    Route::post('blog/{id}/comment', [AppController::class, 'comment'])->name('blog.comment');
 });
