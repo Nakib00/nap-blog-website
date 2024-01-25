@@ -31,8 +31,16 @@ class TeamController extends Controller
 
         $team = team::create($data);
 
-        return redirect(route('admin.team.add'))->with('success', 'Team member added successfully.');
+        return response()->json(['message' => 'Team member added successfully.']);
     }
+
+    //shwo teams member
+    public function getAllTeams()
+    {
+        $team = team::all();
+        return response()->json($team);
+    }
+
     //Edit team info
     public function team_edit($id)
     {

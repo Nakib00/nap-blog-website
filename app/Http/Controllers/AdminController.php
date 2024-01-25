@@ -17,7 +17,7 @@ class AdminController extends Controller
         return view('admin.admin_index', ['blogs' => $blogs,'Comments'=>$comments,'categories'=>$categories ]);
     }
 
-    //open about page
+    //open about paged
     public function admin_about()
     {
         $aboutData = about::all();

@@ -32,4 +32,7 @@
     <!-- icons -->
     <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 </head>

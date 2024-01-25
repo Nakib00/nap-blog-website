@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
 
     //team section
     Route::get('addteam', [AdminController::class, 'addTeam'])->name('admin.team.add');
+    Route::get('showteams', [TeamController::class, 'getAllTeams'])->name('admin.team.all');
     Route::post('storeteam', [TeamController::class, 'storeteam'])->name('admin.team.store');
     Route::get('adminteam/{id}/edit', [TeamController::class, 'team_edit'])->name('admin.team.edit');
     Route::put('adminteam/{id}', [TeamController::class, 'team_update'])->name('admin.team.update');
