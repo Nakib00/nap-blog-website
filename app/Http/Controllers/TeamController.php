@@ -48,6 +48,7 @@ class TeamController extends Controller
 
         return view('admin.team.admin_team_edit', ['teamData' => $teamData]);
     }
+
     //Team update
     public function team_update(Request $request, $id)
     {
@@ -76,6 +77,7 @@ class TeamController extends Controller
 
         return redirect(route('admin_about'))->with('success', 'Teams updated successfully.');
     }
+    
     //Team delete
     public function team_delete($id)
     {

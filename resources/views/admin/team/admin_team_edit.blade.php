@@ -23,7 +23,7 @@
                 </div>
                 @endif
                 <h5 class="text-uppercase bg-light p-2 mt-0 mb-3">Edit Team </h5>
-                <form method="post" action="{{ route('admin.team.update', ['id' => $teamData->id]) }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('admin.team.update', ['id' => $teamData->id]) }}" enctype="multipart/form-data" id="team-form">
                     @csrf
                     @method('put')
                     <div class="form-group mb-3">
@@ -53,5 +53,41 @@
     <!-- end row -->
 
 </div> <!-- container -->
+
+<script>
+    $(document).ready(function() {
+        $('form#team-form').submit(function(event) {
+            // Prevent default form submission
+            event.preventDefault();
+
+            // Serialize form data
+            var formData = $(this).serialize();
+
+            // Show confirmation dialog
+            if (confirm('Are you sure you want to update the team data?')) {
+                // AJAX request
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'PUT', // Use PUT method for update
+                    data: formData,
+                    success: function(response) {
+                        // Handle success response
+                        console.log(response);
+                        // Show success alert
+                        alert('Team data updated successfully.');
+                        // Redirect to a page
+                        window.location.href = '{{ route("admin_about") }}'; // Replace with your desired route
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error response
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
 
 @endsection
